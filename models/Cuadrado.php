@@ -19,6 +19,14 @@ use Yii;
  */
 class Cuadrado extends \app\models\Figura
 {
+
+    public function init()
+    {
+        parent::init();
+        $this->discr = 'cuadrado';
+        $this->numLados = 4;
+    }
+
     /**
      * @inheritdoc
      */
@@ -33,28 +41,10 @@ class Cuadrado extends \app\models\Figura
     public function rules()
     {
         return [
-            [['numLados', 'discr'], 'required'],
-            [['numLados', 'lado', 'base', 'altura', 'hipotenusa', 'workspace'], 'integer'],
-            [['radio'], 'number'],
+            [['numLados', 'discr', 'lado'], 'required'],
+            [['numLados', 'lado'], 'integer'],
             [['discr'], 'string', 'max' => 255],
         ];
     }
 
-    /**
-     * @inheritdoc
-     */
-    public function attributeLabels()
-    {
-        return [
-            'id' => 'ID',
-            'numLados' => 'Num Lados',
-            'discr' => 'Discr',
-            'lado' => 'Lado',
-            'base' => 'Base',
-            'altura' => 'Altura',
-            'hipotenusa' => 'Hipotenusa',
-            'radio' => 'Radio',
-            'workspace' => 'Workspace',
-        ];
-    }
 }
