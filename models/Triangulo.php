@@ -8,16 +8,21 @@ use Yii;
  * This is the model class for table "figura".
  *
  * @property int $id
+ * @property int $numLados
+ * @property string $discr
  * @property int $lado
+ * @property int $base
+ * @property int $altura
+ * @property int $hipotenusa
+ * @property double $radio
  */
-class Cuadrado extends \app\models\Figura
+class Triangulo extends \app\models\Figura
 {
-
     public function init()
     {
         parent::init();
-        $this->discr = 'cuadrado';
-        $this->numLados = 4;
+        $this->discr = 'triangulo';
+        $this->numLados = 3;
     }
 
     /**
@@ -34,8 +39,8 @@ class Cuadrado extends \app\models\Figura
     public function rules()
     {
         return [
-            [['lado'], 'required'],
-            [['lado'], 'integer'],
+            [['base', 'altura', 'hipotenusa'], 'required'],
+            [['base', 'altura', 'hipotenusa'], 'integer'],
         ];
     }
 
