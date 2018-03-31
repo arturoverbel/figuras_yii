@@ -44,4 +44,18 @@ class Triangulo extends \app\models\Figura
         ];
     }
 
+    public function getPerimetro(){
+        return $this->altura + $this->base + $this->hipotenusa;
+    }
+
+    public function getArea() {
+        $semiperimetro = $this->getPerimetro() / 2;
+        $base = $semiperimetro * ($semiperimetro-$this->altura) * ($semiperimetro-$this->base) * ($semiperimetro-$this->hipotenusa);
+        return sqrt($base);
+    }
+
+    public function printr(){
+        return '(Base, Altura, Hipo) : (' . $this->base . ", " . $this->altura . ", " . $this->hipotenusa . ')';
+    }
+
 }

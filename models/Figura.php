@@ -50,4 +50,8 @@ class Figura extends \yii\db\ActiveRecord
             'lado' => 'Lado',
         ];
     }
+
+    public function getArea(){ return 0; }
+    public function getPerimetro(){ return 0; }
+    public function printr(){ return ''; }
 }

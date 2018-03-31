@@ -33,5 +33,26 @@ $this->params['breadcrumbs'][] = $this->title;
             'radio',
         ],
     ]) ?>
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            [
+                'attribute'=>'area',
+                'label'=>'Area',
+                'filter' => false,
+                'value' => function ($model) {
+                    return  $model->getArea();
+                }
+            ],
+            [
+                'attribute'=>'perimetro',
+                'label'=>'Perímetro',
+                'filter' => false,
+                'value' => function ($model) {
+                    return  $model->getPerimetro();
+                }
+            ],
+        ],
+    ]) ?>
 
 </div>

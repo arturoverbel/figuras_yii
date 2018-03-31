@@ -28,6 +28,22 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'radio',
+            [
+                'attribute'=>'area',
+                'label'=>'Area',
+                'filter' => false,
+                'value' => function ($model) {
+                    return  $model->getArea();
+                }
+            ],
+            [
+                'attribute'=>'perimetro',
+                'label'=>'Perímetro',
+                'filter' => false,
+                'value' => function ($model) {
+                    return  $model->getPerimetro();
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

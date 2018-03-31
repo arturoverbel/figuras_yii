@@ -33,6 +33,28 @@ $this->params['breadcrumbs'][] = $this->title;
             'base',
             'altura',
             'hipotenusa',
+
+        ],
+    ]) ?>
+    <?= DetailView::widget([
+        'model' => $model,
+        'attributes' => [
+            [
+                'attribute'=>'area',
+                'label'=>'Area',
+                'filter' => false,
+                'value' => function ($model) {
+                    return  $model->getArea();
+                }
+            ],
+            [
+                'attribute'=>'perimetro',
+                'label'=>'Perímetro',
+                'filter' => false,
+                'value' => function ($model) {
+                    return  $model->getPerimetro();
+                }
+            ],
         ],
     ]) ?>
 

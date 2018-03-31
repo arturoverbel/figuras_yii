@@ -30,6 +30,22 @@ $this->params['breadcrumbs'][] = $this->title;
             'base',
             'altura',
             'hipotenusa',
+            [
+                'attribute'=>'area',
+                'label'=>'Area',
+                'filter' => false,
+                'value' => function ($model) {
+                    return  $model->getArea();
+                }
+            ],
+            [
+                'attribute'=>'perimetro',
+                'label'=>'Perímetro',
+                'filter' => false,
+                'value' => function ($model) {
+                    return  $model->getPerimetro();
+                }
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

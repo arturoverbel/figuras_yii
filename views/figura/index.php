@@ -15,10 +15,6 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <p>
-        <?= Html::a('Create Figura', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
@@ -28,14 +24,17 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'numLados',
             'discr',
-            'lado',
-            'base',
-            //'altura',
-            //'hipotenusa',
-            //'radio',
             //'workspace',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
+
+    <p>
+        <h2>Crear Figura</h2>
+        <?= Html::a('Create Cuadrado', ['/cuadrado/create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Triángulo', ['/triangulo/create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Hexágono', ['/hexagono/create'], ['class' => 'btn btn-success']) ?>
+    </p>
+
 </div>
