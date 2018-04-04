@@ -8,6 +8,7 @@ use app\search\TrianguloSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Workspace;
 
 /**
  * TrianguloController implements the CRUD actions for Triangulo model.
@@ -72,6 +73,7 @@ class TrianguloController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'workspaces' => Workspace::getWorkspaces()
         ]);
     }
 
@@ -92,6 +94,7 @@ class TrianguloController extends Controller
 
         return $this->render('update', [
             'model' => $model,
+            'workspaces' => Workspace::getWorkspaces()
         ]);
     }
 

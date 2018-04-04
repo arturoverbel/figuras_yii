@@ -2,18 +2,20 @@
 
 namespace app\controllers;
 
+use app\models\Figura;
 use Yii;
-use app\models\Cuadrado;
-use app\search\CuadradoSearch;
+use app\models\Workspace;
+use app\search\WorkspaceSearch;
+use yii\helpers\ArrayHelper;
+use yii\helpers\VarDumper;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use app\models\Workspace;
 
 /**
- * CuadradoController implements the CRUD actions for Cuadrado model.
+ * WorkspaceController implements the CRUD actions for Workspace model.
  */
-class CuadradoController extends Controller
+class WorkspaceController extends Controller
 {
     /**
      * @inheritdoc
@@ -31,13 +33,15 @@ class CuadradoController extends Controller
     }
 
     /**
-     * Lists all Cuadrado models.
+     * Lists all Workspace models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new CuadradoSearch();
+        $searchModel = new WorkspaceSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        //var_dump($dataProvider); die();
 
         return $this->render('index', [
             'searchModel' => $searchModel,
@@ -46,40 +50,45 @@ class CuadradoController extends Controller
     }
 
     /**
-     * Displays a single Cuadrado model.
+     * Displays a single Workspace model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
+
+        $model = $this->findModel($id);
+        //VarDumper::dump($model); die();
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $model,
         ]);
     }
 
     /**
-     * Creates a new Cuadrado model.
+     * Creates a new Workspace model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Cuadrado();
+        $model = new Workspace();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            //$model->saveWorkspace();
+
+            $model->saveFiguras();
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
             'model' => $model,
-            'workspaces' => Workspace::getWorkspaces()
+            'figuras' => Figura::getFiguras(true),
         ]);
     }
 
     /**
-     * Updates an existing Cuadrado model.
+     * Updates an existing Workspace model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -90,17 +99,20 @@ class CuadradoController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+
+            $model->saveFiguras();
+
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
             'model' => $model,
-            'workspaces' => Workspace::getWorkspaces()
+            'figuras' => Figura::getFiguras(true),
         ]);
     }
 
     /**
-     * Deletes an existing Cuadrado model.
+     * Deletes an existing Workspace model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -114,15 +126,16 @@ class CuadradoController extends Controller
     }
 
     /**
-     * Finds the Cuadrado model based on its primary key value.
+     * Finds the Workspace model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Cuadrado the loaded model
+     * @return Workspace the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Cuadrado::findOne($id)) !== null) {
+        if (($model = Workspace::findOne($id)) !== null) {
+            $model->init();
             return $model;
         }
 

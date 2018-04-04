@@ -8,6 +8,7 @@ use app\search\HexagonoSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use app\models\Workspace;
 
 /**
  * HexagonoController implements the CRUD actions for Hexagono model.
@@ -54,6 +55,7 @@ class HexagonoController extends Controller
     {
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'workspaces' => Workspace::getWorkspaces()
         ]);
     }
 
@@ -72,6 +74,7 @@ class HexagonoController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'workspaces' => Workspace::getWorkspaces()
         ]);
     }
 

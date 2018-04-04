@@ -7,6 +7,7 @@ use yii\helpers\Html;
 /* @var $model app\models\Cuadrado */
 
 $this->title = 'Create Cuadrado';
+$this->params['breadcrumbs'][] = ['label' => 'Workspaces', 'url' => ['/workspace/index']];
 $this->params['breadcrumbs'][] = ['label' => 'Figuras', 'url' => ['/figura/index']];
 $this->params['breadcrumbs'][] = ['label' => 'Cuadrados', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -17,6 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'workspaces' => $workspaces
     ]) ?>
 
 </div>

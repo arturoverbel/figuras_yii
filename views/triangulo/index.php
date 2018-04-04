@@ -8,6 +8,7 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Triangulos';
+$this->params['breadcrumbs'][] = ['label' => 'Workspaces', 'url' => ['/workspace/index']];
 $this->params['breadcrumbs'][] = ['label' => 'Figuras', 'url' => ['/figura/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

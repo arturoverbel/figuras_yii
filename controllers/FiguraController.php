@@ -52,9 +52,13 @@ class FiguraController extends Controller
      */
     public function actionView($id)
     {
+        return $this->redirect(['/'.$this->findModel($id)->discr.'/view', 'id' => $id]);
+
+        /*
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
+        */
     }
 
     /**
@@ -90,9 +94,12 @@ class FiguraController extends Controller
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
+        return $this->redirect(['/'.$this->findModel($id)->discr.'/update', 'id' => $id]);
+        /*
         return $this->render('update', [
             'model' => $model,
         ]);
+        */
     }
 
     /**

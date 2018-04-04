@@ -9,15 +9,22 @@ use Yii;
  *
  * @property int $id
  * @property int $lado
+ * @property int $workspace
  */
 class Cuadrado extends \app\models\Figura
 {
 
+    const DISCR = 'cuadrado';
+
     public function init()
     {
         parent::init();
-        $this->discr = 'cuadrado';
+        $this->discr = self::DISCR;
         $this->numLados = 4;
+
+        $this->print = $this->printr();
+
+        return $this;
     }
 
     /**
@@ -35,7 +42,7 @@ class Cuadrado extends \app\models\Figura
     {
         return [
             [['lado'], 'required'],
-            [['lado'], 'integer'],
+            [['lado', 'workspace'], 'integer'],
         ];
     }
 

@@ -2,16 +2,16 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use yii\helpers\Url;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Figura */
+/* @var $model app\models\Workspace */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Workspace', 'url' => ['workspace/index']];
-$this->params['breadcrumbs'][] = ['label' => 'Figuras', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Workspaces', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="figura-view">
+<div class="workspace-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -30,14 +30,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'numLados',
-            'discr',
-            'lado',
-            'base',
-            'altura',
-            'hipotenusa',
-            'radio'
+            'nombre',
+            'limiteFiguras'
         ],
     ]) ?>
+
+
+    <h2>Figuras</h2>
+    <table id="w0" class="table table-striped table-bordered detail-view">
+        <tbody>
+            <?php
+                foreach ($model->figuras as $item){
+                    echo '<tr><td>' . $item['discr'] . "</td><td>".Html::a($item['id'], Url::to(['figura/view', 'id' => $item['id'] ]))."</td></tr>";
+
+                }
+            ?>
+        </tbody>
+    </table>
+
 
 </div>

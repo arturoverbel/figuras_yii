@@ -7,6 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Triangulo */
 
 $this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Workspaces', 'url' => ['/workspace/index']];
 $this->params['breadcrumbs'][] = ['label' => 'Figuras', 'url' => ['/figura/index']];
 $this->params['breadcrumbs'][] = ['label' => 'Triangulos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -33,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'base',
             'altura',
             'hipotenusa',
-
+            'workspace',
         ],
     ]) ?>
     <?= DetailView::widget([

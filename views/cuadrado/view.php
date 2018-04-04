@@ -7,6 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\Cuadrado */
 
 $this->title = $model->id;
+$this->params['breadcrumbs'][] = ['label' => 'Workspaces', 'url' => ['/workspace/index']];
 $this->params['breadcrumbs'][] = ['label' => 'Figuras', 'url' => ['/figura/index']];
 $this->params['breadcrumbs'][] = ['label' => 'Cuadrados', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
@@ -31,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'lado',
-
+            'workspace',
         ],
     ]) ?>
     <?= DetailView::widget([

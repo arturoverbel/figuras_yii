@@ -18,6 +18,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'hipotenusa')->textInput() ?>
 
+    <?= $form->field($model, 'workspace')->listBox( $workspaces ) ?>
+
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
     </div>

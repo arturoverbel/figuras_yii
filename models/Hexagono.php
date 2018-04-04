@@ -4,25 +4,18 @@ namespace app\models;
 
 use Yii;
 
-/**
- * This is the model class for table "figura".
- *
- * @property int $id
- * @property int $numLados
- * @property string $discr
- * @property int $lado
- * @property int $base
- * @property int $altura
- * @property int $hipotenusa
- * @property double $radio
- */
 class Hexagono extends \app\models\Figura
 {
+
+    const DISCR = 'hexagono';
+
     public function init()
     {
         parent::init();
-        $this->discr = 'hexagono';
+        $this->discr = self::DISCR;
         $this->numLados = 6;
+
+        $this->print = $this->printr();
     }
 
     /**
@@ -41,6 +34,7 @@ class Hexagono extends \app\models\Figura
         return [
             [['radio'], 'required'],
             [['radio'], 'number'],
+            [['workspace'], 'integer'],
         ];
     }
 

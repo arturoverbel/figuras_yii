@@ -7,6 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\search\CuadradoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
+$this->params['breadcrumbs'][] = ['label' => 'Workspaces', 'url' => ['/workspace/index']];
 $this->params['breadcrumbs'][] = ['label' => 'Figuras', 'url' => ['/figura/index']];
 $this->title = 'Cuadrados';
 $this->params['breadcrumbs'][] = $this->title;
