@@ -76,8 +76,7 @@ class Workspace extends \yii\db\ActiveRecord
      */
     public function saveFiguras(){
 
-        $figures = Figura::find(['workspace' => $this->id]);
-
+        Figura::updateAll(['workspace' => null], 'workspace='.$this->id);
 
         if (is_array($this->figuras)) {
 
